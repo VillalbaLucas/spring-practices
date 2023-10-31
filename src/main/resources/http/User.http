@@ -8,5 +8,8 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/users
 Content-Type: application/json
+###
+GET http://localhost:8080/users/0
+Content-Type: application/json
 
 

@@ -1,6 +1,7 @@
 package com.codo.tpgrupo.springpractices.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,9 @@ public class UserService {
 
     public List<User> getUsers(){
         return repository.findAll();
+    }
+
+    public Optional<User> getById(Long id){
+        return repository.findById(id);
     }
 }
