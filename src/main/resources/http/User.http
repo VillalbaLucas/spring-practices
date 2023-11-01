@@ -1,15 +1,16 @@
 POST http://localhost:8080/users HTTP/1.1
 Content-Type: application/json
+
     {
-        "name": "Santiago",
-        "lastname": "Gomez",
-        "age": 21 
+        "name": "Pedro",
+        "lastname": "Dominguez",
+        "age": 50
     }
 ###
 GET http://localhost:8080/users
 Content-Type: application/json
 ###
-GET http://localhost:8080/users/0
+GET http://localhost:8080/users/4
 Content-Type: application/json
-
-
+###
+DELETE http://localhost:8080/users/4 HTTP/1.1
