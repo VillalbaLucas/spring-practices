@@ -15,6 +15,7 @@ public class SpringPracticesApplication {
 	@ResponseBody
 	public ModelAndView welcome(){
 		ModelAndView view = new ModelAndView("index.html");
+		
 		return view;
 	}
 	public static void main(String[] args){
