@@ -18,7 +18,6 @@ import com.codo.tpgrupo.springpractices.services.UserService;
 
 @RestController
 public class UserController {
-    
     private UserService service;
 
     public UserController(UserService _service){
@@ -56,5 +55,10 @@ public class UserController {
             response = new ResponseEntity<>("El user no se encuentra en la base de datos", HttpStatus.BAD_REQUEST);                                   
         }
         return response;
+    }
+
+    @GetMapping("/users/generate/{quantity}")
+    public void generateUsers(@PathVariable int quantity){
+        service.generateAndSaveAll(quantity);
     }
 }
