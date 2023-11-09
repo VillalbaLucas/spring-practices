@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.codo.tpgrupo.springpractices.models.User;
 import com.codo.tpgrupo.springpractices.repository.UserRepo;
+import com.codo.tpgrupo.springpractices.utils.FakeUser;
 
 @Service
 public class UserService {
@@ -30,5 +31,9 @@ public class UserService {
 
     public void deleteUser(Long id){
         repository.deleteById(id);
+    }
+
+    public void generateAndSaveAll(int quantity){
+        repository.saveAll(FakeUser.generateUsers(quantity));
     }
 }
