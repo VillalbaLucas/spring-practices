@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codo.tpgrupo.springpractices.models.User;
@@ -17,6 +18,7 @@ import com.codo.tpgrupo.springpractices.services.UserService;
 
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
     private UserService service;
 
@@ -24,12 +26,12 @@ public class UserController {
         service=_service;
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     public List<User> getUsers(){
         return service.getUsers();
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         Optional<User> user = service.getById(id);
 
@@ -61,4 +63,10 @@ public class UserController {
     public void generateUsers(@PathVariable int quantity){
         service.generateAndSaveAll(quantity);
     }
+
+    @GetMapping("/generate")
+    public void generateUsers(){
+        service.generateAndSave();
+    }
+
 }
