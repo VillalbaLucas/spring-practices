@@ -10,17 +10,19 @@ import com.codo.tpgrupo.springpractices.repository.AccountRepo;
 
 @Service
 public class AccountService {
-    
-    
-    private AccountRepo repository;
-    
-    public AccountService(AccountRepo repo){
+
+    private static AccountRepo repository;
+    private static UserService userService;
+
+    public AccountService(AccountRepo repo, UserService _userService){
         repository = repo;
+        userService = _userService;
     }
 
-    public void save(Account account){
+    public void  save(Account account, Long id){ 
+        account.setUser(userService.getById(id));
         repository.save(account);
-    }
+    } 
 
     public Optional<Account> geById(Long id){
         return repository.findById(id);
