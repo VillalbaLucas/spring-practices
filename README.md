@@ -8,7 +8,7 @@ Tiene como objetivo tambien poder probar y entrenar para un mejor manejo de git 
 - MySql
 - Lombok
 
-## Recursos
+## Endpoints
 ### User
   - `/users`
     - Crea usuarios con nombre, apellido y edad. (POST)
@@ -19,3 +19,7 @@ Tiene como objetivo tambien poder probar y entrenar para un mejor manejo de git 
   - `/users/generate/quantity`
     - Este endpoint me genera un User con datos aleatorios y se insertan en la base de datos, quantity `int` es la cantidad de usuarios que se desean crear. (GET)   
   
+  ### Account
+  - `/accounts`
+    - Consulta las cuentas en la base de datos. (GET)
+    - Crea una cuenta con username, password, amount y usuario y la persiste en la base de datos. (POST) 
