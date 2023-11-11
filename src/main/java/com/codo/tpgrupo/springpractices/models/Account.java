@@ -1,6 +1,8 @@
 package com.codo.tpgrupo.springpractices.models;
 
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -39,6 +41,13 @@ public class Account {
         username=_username;
         password=_password;
         amount=_amount;
+        user=_user;
+    }
+
+    public void setUser(Optional<?> _user){
+        user= (User)_user.get();
+    }
+    public void setUser(User _user){
         user=_user;
     }
 }
