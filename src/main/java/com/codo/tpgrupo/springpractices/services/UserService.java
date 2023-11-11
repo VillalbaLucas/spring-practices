@@ -33,7 +33,13 @@ public class UserService {
         repository.deleteById(id);
     }
 
+
+    //Genera User con datos falsos para agilizar el ingreso de datos.
     public void generateAndSaveAll(int quantity){
         repository.saveAll(FakeUser.generateUsers(quantity));
+    }
+    
+    public void generateAndSave(){
+        repository.save(FakeUser.generateUser());
     }
 }
