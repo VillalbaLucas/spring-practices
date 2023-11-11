@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.codo.tpgrupo.springpractices.models.User;
 import com.codo.tpgrupo.springpractices.services.UserService;
@@ -20,8 +21,9 @@ import com.codo.tpgrupo.springpractices.services.UserService;
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    
     private UserService service;
-
+   
     public UserController(UserService _service){
         service=_service;
     }
@@ -42,12 +44,12 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users")
+    @PostMapping("")
     public void saveUser(@RequestBody User user){
         service.save(user);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
         ResponseEntity<?> response;
         if(service.getById(id).isPresent()){
@@ -59,7 +61,7 @@ public class UserController {
         return response;
     }
 
-    @GetMapping("/users/generate/{quantity}")
+    @GetMapping("/generate/{quantity}")
     public void generateUsers(@PathVariable int quantity){
         service.generateAndSaveAll(quantity);
     }
@@ -67,6 +69,11 @@ public class UserController {
     @GetMapping("/generate")
     public void generateUsers(){
         service.generateAndSave();
+    }
+
+    @PostMapping("/create-account/{id}")
+    public RedirectView createAccount(@PathVariable Long id){
+        return new RedirectView("/accounts/"+id);
     }
 
 }
