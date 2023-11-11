@@ -1,12 +1,14 @@
 package com.codo.tpgrupo.springpractices.models;
 
-import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,8 +23,22 @@ public class Account {
 
     private String username;
     private String password;
+    private Integer amount;
 
-    // @OneToMany
-    // private User user;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonIgnore
+    private User user;
 
+    public Account(String _username, String _password, Integer _amount){
+        username=_username;
+        password=_password;
+        amount=_amount;
+    }
+    public Account(String _username, String _password, Integer _amount, User _user){
+        username=_username;
+        password=_password;
+        amount=_amount;
+        user=_user;
+    }
 }
