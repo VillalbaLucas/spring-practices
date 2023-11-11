@@ -10,9 +10,13 @@ Content-Type: application/json
 GET http://localhost:8080/users
 Content-Type: application/json
 ###
-GET http://localhost:8080/users/4
+GET http://localhost:8080/users/1
 Content-Type: application/json
 ###
 GET http://localhost:8080/users/generate/7
+Content-Type: application/json
+###
+GET http://localhost:8080/users/generate
+Content-Type: application/json
 ###
 DELETE http://localhost:8080/users/7 HTTP/1.1
