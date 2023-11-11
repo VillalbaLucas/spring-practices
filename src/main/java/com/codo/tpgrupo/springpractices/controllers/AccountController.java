@@ -40,8 +40,4 @@ public class AccountController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> get(@PathVariable Long id){
-        return ResponseEntity.ok().body(id);
-    }
 }
