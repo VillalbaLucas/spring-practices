@@ -24,6 +24,10 @@ public class AccountService {
         repository.save(account);
     } 
 
+    public void  save(Account account){ 
+        repository.save(account);
+    } 
+
     public Optional<Account> geById(Long id){
         return repository.findById(id);
     }

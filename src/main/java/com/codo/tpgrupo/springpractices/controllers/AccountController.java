@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,5 +45,18 @@ public class AccountController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }
+
+    @PatchMapping("/{id}/{newUsername}")
+    public ResponseEntity<?> setUsername(@PathVariable Long id, @PathVariable String newUsername){
+        try{
+            Account account = service.geById(id).get();
+            account.setUsername(newUsername);
+            service.save(account);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
+        }
+    }
+
 
 }
