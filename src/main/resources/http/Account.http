@@ -1,13 +1,16 @@
 GET http://localhost:8080/accounts
 Content-Type: application/json
 ###
-POST http://localhost:8080/accounts/44
+GET http://localhost:8080/accounts/2
+Content-Type: application/json
+###
+POST http://localhost:8080/accounts/3
 Content-Type: application/json
 
 {
-    "username":"michaelJson@gmail.com",
-    "password":"aiugoki",
-    "amount": 24000,
+    "username":"SantiGomez@gmail.com",
+    "password":"messi10crack",
+    "amount": 31500,
     "user":{}
 }
 ###

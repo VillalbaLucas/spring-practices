@@ -29,6 +29,11 @@ public class AccountController {
         return ResponseEntity.ok().body(service.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getAccounts(@PathVariable Long id){
+        return ResponseEntity.ok().body(service.geById(id));
+    }
+
     @PostMapping("/{id}")
     public ResponseEntity<?> saveAccount(@PathVariable Long id, @RequestBody Account account){
         
