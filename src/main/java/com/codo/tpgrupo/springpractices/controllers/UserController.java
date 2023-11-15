@@ -3,6 +3,7 @@ package com.codo.tpgrupo.springpractices.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.codo.tpgrupo.springpractices.config.Faker;
 import com.codo.tpgrupo.springpractices.models.User;
 import com.codo.tpgrupo.springpractices.services.UserService;
 
@@ -22,7 +24,10 @@ import com.codo.tpgrupo.springpractices.services.UserService;
 @RequestMapping("/users")
 public class UserController {
     
+    @Autowired
+    private Faker faker;
     private UserService service;
+
    
     public UserController(UserService _service){
         service=_service;

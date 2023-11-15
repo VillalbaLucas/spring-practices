@@ -45,4 +45,7 @@ Tiene una relacion N a 1 con User.
   - `/accounts`
     - Consulta las cuentas en la base de datos. (GET)
   - `/accounts/id`
-    - Crea una cuenta con y la vincula al usuario con ese id. (POST)  
+    - Crea una cuenta con y la vincula al usuario con ese id. (POST)
+    - Recupera un account de la bases de datos. (GET)  
+  - `/accounts/id/newUsername`
+    - Me permite modificar el username de account. (PATCH)  
