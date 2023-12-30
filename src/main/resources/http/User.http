@@ -1,4 +1,4 @@
-POST http://localhost:8080/users HTTP/1.1
+POST http://localhost:8080/api/users/save HTTP/1.1
 Content-Type: application/json
 
     {
@@ -16,7 +16,7 @@ GET http://localhost:8080/api/users/search/2
 GET http://localhost:8080/api/users/generate/one
 Content-Type: application/json
 ###
-GET http://localhost:8080/api/users/generate/2
+GET http://localhost:8080/api/users/generate/5
 Content-Type: application/json
 ###
 POST http://localhost:8080/api/users/create-account/2
