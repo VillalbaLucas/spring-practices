@@ -15,17 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.codo.tpgrupo.springpractices.config.Faker;
 import com.codo.tpgrupo.springpractices.models.User;
 import com.codo.tpgrupo.springpractices.services.UserService;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
     
     @Autowired
-    private Faker faker;
     private UserService service;
 
    
@@ -33,12 +31,12 @@ public class UserController {
         service=_service;
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<User> getUsers(){
         return service.getUsers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/search/{id}")
     public ResponseEntity<?> getById(@PathVariable Long id){
         Optional<User> user = service.getById(id);
 
@@ -49,12 +47,12 @@ public class UserController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping("/save")
     public void saveUser(@RequestBody User user){
         service.save(user);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id){
         ResponseEntity<?> response;
         if(service.getById(id).isPresent()){
@@ -71,7 +69,7 @@ public class UserController {
         service.generateAndSaveAll(quantity);
     }
 
-    @GetMapping("/generate")
+    @GetMapping("/generate/one")
     public void generateUsers(){
         service.generateAndSave();
     }

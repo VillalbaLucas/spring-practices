@@ -16,7 +16,7 @@ import com.codo.tpgrupo.springpractices.models.Account;
 import com.codo.tpgrupo.springpractices.services.AccountService;
 
 @RestController
-@RequestMapping("/accounts")
+@RequestMapping("/api/accounts")
 public class AccountController {
  
     private static AccountService service;
@@ -25,17 +25,17 @@ public class AccountController {
         service=_service;
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     public ResponseEntity<List<Account>> getAccounts(){
         return ResponseEntity.ok().body(service.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/search/{id}")
     public ResponseEntity<?> getAccounts(@PathVariable Long id){
         return ResponseEntity.ok().body(service.geById(id));
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/save/{id}")
     public ResponseEntity<?> saveAccount(@PathVariable Long id, @RequestBody Account account){
         
         try{
@@ -46,6 +46,7 @@ public class AccountController {
         }
     }
 
+    //TODO: refactorizar el modify
     @PatchMapping("/{id}/{newUsername}")
     public ResponseEntity<?> setUsername(@PathVariable Long id, @PathVariable String newUsername){
         try{
