@@ -7,7 +7,6 @@ import net.datafaker.Faker;
 
 public class FakerAccount {
     
-    // @Autowired
     private static Faker faker = new Faker();
 
     private final static int AMOUNT_MIN = 20_000;

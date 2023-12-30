@@ -3,9 +3,7 @@ package com.codo.tpgrupo.springpractices.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.config.FreeMarkerConfigurerBeanDefinitionParser;
 
 import com.codo.tpgrupo.springpractices.models.User;
 
@@ -14,11 +12,7 @@ import net.datafaker.Faker;
 @Component
 public class FakeUser {
 
-    private static Faker faker;
-
-    public FakeUser(Faker _faker) {
-        faker = _faker;
-    }
+    private static Faker faker = new Faker();
 
     public static User generateUser() {
         User user = new User(
