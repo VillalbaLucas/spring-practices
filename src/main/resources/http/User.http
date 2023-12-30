@@ -7,18 +7,26 @@ Content-Type: application/json
         "age": 50
     }
 ###
-GET http://localhost:8080/users
+GET http://localhost:8080/api/users/all
+
+###
+GET http://localhost:8080/api/users/search/2
+
+###
+GET http://localhost:8080/api/users/generate/one
 Content-Type: application/json
 ###
-GET http://localhost:8080/users/2
+GET http://localhost:8080/api/users/generate/2
 Content-Type: application/json
 ###
-GET http://localhost:8080/users/generate/1
+POST http://localhost:8080/api/users/create-account/2
 Content-Type: application/json
-###
-GET http://localhost:8080/users/generate
-Content-Type: application/json
-###
-POST http://localhost:8080/users/create-account/2
+
+{
+    "username": "yo",
+    "password": "password",
+    "amount": {{$randomInt 10000 50000}},
+
+}
 ###
 DELETE http://localhost:8080/users/7 HTTP/1.1
