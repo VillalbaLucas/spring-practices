@@ -1,17 +1,23 @@
-version: "3.9"
+version: "3"
 services:
-  app-spring:
-    build: .
-    depends_on:
-      - mysql-spring
-    ports:
-      - "8080:8080"
-    links:
-      - mysql-spring
   mysql-spring:
     image: mysql
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root
- 
+      - MYSQL_DATABASE=db_spring_practices
+    volumes:
+      - db:/var/lib/mysql
+  app-spring:
+    build: .
+    restart: on-failure
+    depends_on:
+      - mysql-spring
+    links:
+      - mysql-spring
+    ports:
+      - "8080:8080"
+
+volumes:
+  db:

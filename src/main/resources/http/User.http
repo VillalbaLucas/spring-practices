@@ -10,7 +10,7 @@ Content-Type: application/json
 GET http://localhost:8080/api/users/all
 
 ###
-GET http://localhost:8080/api/users/search/2
+GET http://localhost:8080/api/users/search/4
 
 ###
 GET http://localhost:8080/api/users/generate/one
